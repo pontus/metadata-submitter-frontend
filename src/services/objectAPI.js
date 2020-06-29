@@ -3,10 +3,10 @@ import { create } from "apisauce"
 
 const api = create({ baseURL: "/objects" })
 
-const createFromXML = async (objectType: string, XMLFile: Object) => {
+const createFromXML = async (fileID: string, objectType: string, XMLFile: Object) => {
   let formData = new FormData()
   formData.append(objectType, XMLFile)
-  return await api.post(`/${objectType}`, formData)
+  return await api.post(`/${objectType}?fileID=${fileID}`, formData)
 }
 
 const getObjectByAccessionId = async (

@@ -16,7 +16,7 @@ const UploadXMLForm = () => {
   return (
     <div>
       <Formik
-        initialValues={{ file: null }}
+        initialValues={{ file: null, fileID: '' }}
         validationSchema={yup.object().shape({
           file: yup
             .mixed()
@@ -29,6 +29,7 @@ const UploadXMLForm = () => {
         })}
         onSubmit={async (values, { setSubmitting }) => {
           const response = await objectAPIService.createFromXML(
+            values.fileID,
             objectType,
             values.file
           )
@@ -46,6 +47,7 @@ const UploadXMLForm = () => {
       >
         {({ submitForm, isSubmitting }) => (
           <Form>
+            <Field type="fileID" name="fileID" placeholder="EGAF00000000000000"/>
             <Field component={SimpleFileUpload} name="file" />
             {isSubmitting && <LinearProgress />}
             <Button
