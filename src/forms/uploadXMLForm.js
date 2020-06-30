@@ -47,7 +47,7 @@ const UploadXMLForm = () => {
       >
         {({ submitForm, isSubmitting }) => (
           <Form>
-            <Field type="fileID" name="fileID" placeholder="EGAF00000000000000"/>
+            <Field type="fileID" name="fileID" placeholder="file id"/>
             <Field component={SimpleFileUpload} name="file" />
             {isSubmitting && <LinearProgress />}
             <Button
